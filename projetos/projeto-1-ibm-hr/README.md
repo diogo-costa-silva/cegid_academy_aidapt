@@ -74,8 +74,8 @@ Localizacao: `sql/`
 | `QUESTIONS.md` | Rastreabilidade completa - cada questao com query SQL, resultado e interpretacao |
 | `PROGRESS.md` | Estado actual e checklist de analises |
 | `CHANGELOG.md` | Historico de alteracoes do projeto |
-| `setup/setup-windows-ssms.md` | Tutorial para Windows + SSMS |
-| `setup/setup-macos-docker.md` | Tutorial para macOS + Docker |
+| [`docs/setup-windows-ssms.md`](../../docs/setup-windows-ssms.md) | Tutorial para Windows + SSMS |
+| [`docs/setup-macos-docker.md`](../../docs/setup-macos-docker.md) | Tutorial para macOS + Docker |
 
 ## Como Executar
 

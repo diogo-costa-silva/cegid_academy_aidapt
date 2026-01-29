@@ -10,6 +10,7 @@ Formacao em Data Analytics e Business Intelligence (2025/2026).
 |------|------|-----------|
 | [Exercicio 1](./exercicios/exercicio-1-sql/) | Fundamentos SQL | 62 queries SQL cobrindo DDL, DML, JOINs, agregacoes |
 | [Projeto 1](./projetos/projeto-1-ibm-hr/) | IBM HR Analytics | Analise de 1470 colaboradores - 129 queries, 46 questoes |
+| [Docs](./docs/) | Guias de setup | Configuracao de ambiente (Docker, SSMS) |
 
 ## Setup
 
