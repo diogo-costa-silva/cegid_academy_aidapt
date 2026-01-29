@@ -1,0 +1,148 @@
+-- TABELA 01 
+CREATE TABLE customers (
+
+CUSTOMER_ID  INT   PRIMARY KEY,
+NAME  VARCHAR(100) NULL , 
+EMAIL VARCHAR(100) NULL,
+CITY VARCHAR(100) NULL,
+CREATED_AT DATETIME2 NOT NULL DEFAULT GETDATE()
+
+)
+
+SELECT * FROM customers
+
+INSERT INTO customers(CUSTOMER_ID,NAME,EMAIL,CITY)
+
+VALUES
+(2,'Bruno Braumann',   'bruno.costa@email.com',    'Lisboa'),
+(3,'Carla Souza',   'carla.souza@email.com',    'Madrid'),
+(4,'Daniel Rocha',  'daniel.rocha@email.com',   'Porto'),
+(5,'Eva Martins',   'eva.martins@email.com',    'Paris'),
+(6,'Felipe Lima',   'felipe.lima@email.com',    'Porto'),
+(7,'Gabriela Nunes','gabriela.nunes@email.com', 'Berlin'),
+(8,'Hugo Mendes',   'hugo.mendes@email.com',    'Lisboa')
+
+-- TABELA 02 
+CREATE TABLE products (
+
+ProductID  INT IDENTITY(1,1)  PRIMARY KEY,
+NAME  VARCHAR(100) NULL , 
+category VARCHAR(100) NULL,
+price DECIMAL(10,2) NULL,
+active  BIT
+)
+
+Drop table products 
+
+INSERT INTO dbo.Products (NAME, Category, Price, Active)
+VALUES
+('Power BI Pro Course',     'Courses', 199.90, 1),
+('Excel Advanced Course',   'Courses', 149.90, 1),
+('SQL Server Fundamentals', 'Courses', 129.90, 1),
+('Keyboard',                'Hardware', 49.90, 1),
+('Mouse',                   'Hardware', 29.90, 1),
+('Notebook Stand',          'Accessories', 19.90, 1),
+('USB Hub',                 'Accessories', 15.00, 1),
+('Old Cable',               'Accessories', 3.50, 0),
+('Monitor 24"',             'Hardware', 120.00, 1),
+('Fabric Workshop',         'Courses', 299.90, 1)
+
+
+SELECT * FROM Products
+
+Select SUM(price) from Products
+
+-- TABELA 03 
+CREATE TABLE Orders (
+
+
+order_id  INT IDENTITY(1,1)  PRIMARY KEY,
+CustomerID  int not NULL , 
+OrderDate  DATETIME2  NULL,
+Status VARCHAR(100) NULL,
+
+)
+
+INSERT INTO dbo.Orders (CustomerID, OrderDate, Status)
+VALUES
+(1, DATEADD(DAY,-10, Getdate()), 'PAID'),
+(2, DATEADD(DAY,-5,  Getdate()), 'NEW'),
+(3, DATEADD(DAY,-20, Getdate()), 'CANCELLED'),
+(4, DATEADD(DAY,-2,  Getdate()), 'SHIPPED'),
+(5, DATEADD(DAY,-40, Getdate()), 'PAID'),
+(6, DATEADD(DAY,-1,  Getdate()), 'NEW'),
+(7, DATEADD(DAY,-15, Getdate()), 'PAID'),
+(8, DATEADD(DAY,-3,  Getdate()), 'PAID'),
+(1, DATEADD(DAY,-60, Getdate()), 'SHIPPED'),
+(2, DATEADD(DAY,-12, Getdate()), 'PAID'),
+(3, DATEADD(DAY,-8,  Getdate()), 'NEW'),
+(4, DATEADD(DAY,-25, Getdate()), 'CANCELLED');
+
+SELECT * FROM Orders
+
+-- TABELA 05
+
+CREATE TABLE order_items ( 
+	order_id INT NOT NULL, 
+	product_id INT NOT NULL, 
+	quantity INT NOT NULL, 
+	unit_price DECIMAL(10,2) NOT NULL
+	)
+
+INSERT INTO dbo.order_items (order_id, product_id, Quantity, unit_price)
+VALUES
+(1, 1, 1, 199.90),
+(1, 6, 2, 19.90),
+
+(2, 2, 1, 149.90),
+(2, 5, 1, 29.90),
+
+(3, 4, 1, 49.90),
+
+(4, 9, 1, 120.00),
+(4, 7, 2, 15.00),
+
+(5, 10, 1, 299.90),
+(5, 6, 1, 19.90),
+
+(6, 3, 1, 129.90),
+
+(7, 1, 1, 199.90),
+(7, 2, 1, 149.90),
+
+(8, 4, 1, 49.90),
+(8, 5, 1, 29.90),
+(8, 7, 2, 15.00),
+
+(9, 9, 2, 120.00),
+
+(10, 3, 1, 129.90),
+(10, 6, 1, 19.90),
+
+(11, 2, 2, 149.90),
+
+(12, 4, 1, 49.90);
+
+
+-- Tabela 06 
+
+CREATE TABLE payments ( 
+	payment_id INT identity(10,5)  PRIMARY KEY NOT NULL, 
+	order_id INT NOT NULL, 
+	payment_date Datetime2 NOT NULL, 
+	amount DECIMAL(10,2) NOT NULL,
+	method varchar(100) not null,
+	status varchar(100) not null
+	)
+
+INSERT INTO dbo.Payments (order_id, payment_date, Amount, Method, Status)
+VALUES
+(1, DATEADD(DAY,-9, Getdate()), 239.70, 'CARD', 'CONFIRMED'),
+(4, DATEADD(DAY,-2, Getdate()), 150.00, 'TRANSFER', 'CONFIRMED'),
+(5, DATEADD(DAY,-38, Getdate()), 319.80, 'PIX', 'CONFIRMED'),
+(7, DATEADD(DAY,-14, Getdate()), 349.80, 'CARD', 'CONFIRMED'),
+(8, DATEADD(DAY,-3, Getdate()), 124.90, 'CASH', 'CONFIRMED'),
+(9, DATEADD(DAY,-59, Getdate()), 240.00, 'PIX', 'CONFIRMED'),
+(10, DATEADD(DAY,-11, Getdate()), 149.80, 'CARD', 'FAILED');
+
+Select * from Payments
