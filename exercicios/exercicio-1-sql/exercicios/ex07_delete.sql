@@ -10,8 +10,10 @@ USE ExerciciosDB;
 GO
 
 -- ============================================
--- ATENCAO: Estas queries ELIMINAM dados!
--- Recomenda-se fazer backup ou usar transaccoes
+-- NOTA: Todos os DELETEs estao envolvidos em
+-- BEGIN TRANSACTION / ROLLBACK para nao alterar
+-- os dados da base de dados.
+-- Para eliminar de facto, substituir ROLLBACK por COMMIT.
 -- ============================================
 
 -- ============================================
@@ -24,8 +26,10 @@ FROM dbo.Payments
 WHERE Status = 'FAILED';
 
 -- DELETE:
+BEGIN TRANSACTION;
 DELETE FROM dbo.Payments
 WHERE Status = 'FAILED';
+ROLLBACK;
 
 -- Verificar depois:
 SELECT COUNT(*) AS PagamentosFailed
@@ -43,7 +47,26 @@ FROM dbo.Orders o
 LEFT JOIN dbo.Payments p ON o.OrderID = p.OrderID
 WHERE o.Status = 'CANCELLED';
 
--- DELETE (apenas pedidos CANCELLED sem pagamentos CONFIRMED):
+-- DELETE (dentro de transaccao):
+-- A FK FK_OrderItems_Orders (ON DELETE NO_ACTION) obriga a
+-- eliminar filhos (OrderItems) antes de pais (Orders).
+--
+-- Alternativa sem transaccao (opcao 1):
+-- Eliminar OrderItems e Orders definitivamente, sem ROLLBACK.
+-- A ordem seria a mesma (filhos antes de pais), mas com COMMIT.
+BEGIN TRANSACTION;
+
+-- 1. Eliminar OrderItems dos pedidos CANCELLED (filhos antes de pais)
+DELETE FROM dbo.OrderItems
+WHERE OrderID IN (
+    SELECT OrderID FROM dbo.Orders
+    WHERE Status = 'CANCELLED'
+      AND OrderID NOT IN (
+          SELECT OrderID FROM dbo.Payments WHERE Status = 'CONFIRMED'
+      )
+);
+
+-- 2. Eliminar os pedidos CANCELLED
 DELETE FROM dbo.Orders
 WHERE Status = 'CANCELLED'
   AND OrderID NOT IN (
@@ -52,9 +75,7 @@ WHERE Status = 'CANCELLED'
       WHERE Status = 'CONFIRMED'
   );
 
--- Nota: Pode falhar se houver OrderItems referenciando estes pedidos
--- Nesse caso, eliminar primeiro os OrderItems:
--- DELETE FROM dbo.OrderItems WHERE OrderID IN (SELECT OrderID FROM dbo.Orders WHERE Status = 'CANCELLED' AND ...)
+ROLLBACK;
 
 -- ============================================
 -- 7.3 Remover produtos inativos que nunca foram vendidos
@@ -70,12 +91,14 @@ WHERE p.Active = 0
   );
 
 -- DELETE:
+BEGIN TRANSACTION;
 DELETE FROM dbo.Products
 WHERE Active = 0
   AND ProductID NOT IN (
       SELECT DISTINCT ProductID
       FROM dbo.OrderItems
   );
+ROLLBACK;
 
 -- Alternativa com NOT EXISTS:
 -- DELETE FROM dbo.Products p
@@ -97,11 +120,13 @@ WHERE c.CustomerID NOT IN (
 );
 
 -- DELETE:
+BEGIN TRANSACTION;
 DELETE FROM dbo.Customers
 WHERE CustomerID NOT IN (
     SELECT DISTINCT CustomerID
     FROM dbo.Orders
 );
+ROLLBACK;
 
 -- Alternativa com NOT EXISTS:
 -- DELETE FROM dbo.Customers c
@@ -113,7 +138,11 @@ WHERE CustomerID NOT IN (
 -- Notas:
 -- - SEMPRE usar WHERE no DELETE (senao elimina TUDO!)
 -- - Verificar dados ANTES de eliminar
--- - Considerar FOREIGN KEYS (eliminar filhos antes de pais)
+-- - Considerar FOREIGN KEYS: eliminar filhos antes de pais
 -- - NOT IN vs NOT EXISTS: NOT EXISTS e geralmente mais eficiente
--- - Usar transaccoes: BEGIN TRAN; DELETE...; ROLLBACK/COMMIT;
+-- - Transaccoes: BEGIN TRAN; DELETE...; ROLLBACK/COMMIT;
+--
+-- Neste notebook, todos os DELETEs usam ROLLBACK.
+-- No notebook (.ipynb), como o JupySQL nao suporta transaccoes,
+-- os DELETEs usam SQLAlchemy directamente (engine.connect() + rollback).
 -- ============================================
