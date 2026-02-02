@@ -74,6 +74,7 @@
 **Global**: Mulheres ganham MAIS ($6,686 vs $6,380) = **-4.58%** a favor das mulheres
 
 **Por cargo - Homens ganham mais:**
+
 | Cargo | Gap | Significado |
 |-------|-----|-------------|
 | Research Director | +$1,513 | Homens ganham mais |
@@ -81,11 +82,14 @@
 | Sales Executive | +$269 | |
 
 **Por cargo - Mulheres ganham mais:**
-| Cargo | Gap | Significado |
-|-------|-----|-------------|
-| Human Resources | -$440 | Mulheres ganham mais |
-| Manufacturing Director | -$227 | |
-| Research Scientist | -$171 | |
+
+| Cargo                  | Gap   | Significado          |
+| ---------------------- | ----- | -------------------- |
+| Human Resources        | -$440 | Mulheres ganham mais |
+| Manufacturing Director | -$227 |                      |
+| Research Scientist     | -$171 |                      |
+
+
 
 > Evidencia: [G5](QUESTIONS.md#g5-existe-gap-salarial-entre-generos)
 
