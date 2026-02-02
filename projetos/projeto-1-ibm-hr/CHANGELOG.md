@@ -6,6 +6,62 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2026-02-01] - Analise Aprofundada de Attrition
+
+### Added
+- `docs/analise-attrition.md` — documento autonomo com analise causal de attrition:
+  - 10 seccoes: introducao, framework causal, panorama geral, interaccoes, padroes temporais, compensacao, carreira, confounders, perfis de risco, conclusoes
+  - 25 queries SQL novas executadas via MCP (apendice com todas as queries)
+  - Score de risco expandido (10 factores): de 4.4% (score 0-1) a 95.5% (score 7+)
+  - 212 colaboradores actuais identificados em risco (score 4+), 16 em risco critico (score 6+)
+  - Analise de interaccoes: OverTime + salario baixo = 56.1% (efeito super-aditivo)
+  - Confounders controlados: salario por JobLevel, OverTime por JobRole
+  - Perfis multi-variavel: quadruplo (OT+Jovem+Solteiro+SalBaixo) = 75.0% attrition
+
+## [2026-01-29] - Execucao dos Notebooks com Outputs Gravados
+
+### Changed
+- Executados todos os 8 notebooks (01-08) com outputs gravados nas celulas:
+  - `01_schema.ipynb` - 4 celulas executadas (DROP TABLE, CREATE TABLE, CREATE INDEX)
+  - `02_import_data.ipynb` - 7 celulas executadas (BULK INSERT, verificacoes)
+  - `03_analise_exploratoria.ipynb` - 19 celulas executadas (18 queries)
+  - `04_analise_genero.ipynb` - 19 celulas executadas (18 queries)
+  - `05_analise_felicidade.ipynb` - 20 celulas executadas (19 queries)
+  - `06_analise_envelhecimento.ipynb` - 18 celulas executadas (17 queries)
+  - `07_analise_attrition.ipynb` - 22 celulas executadas (21 queries)
+  - `08_analise_adicional.ipynb` - 28 celulas executadas (27 queries)
+- Total: 137 celulas de codigo, todas com output gravado
+
+### Added
+- Dependencias adicionadas ao `pyproject.toml`:
+  - `python-dotenv>=1.2.1` (necessario para notebooks, faltava)
+  - `nbconvert>=7.17.0` e `nbclient>=0.10.4` (execucao de notebooks via CLI)
+
+## [2026-01-29] - Correccao de Inconsistencias na Documentacao
+
+### Fixed
+- **PROGRESS.md** - Contagens de queries corrigidas na tabela checklist:
+  - Valores errados (9+9+8+9+8+9=52) substituidos pelos valores reais dos ficheiros SQL (18+18+19+17+21+27=120)
+  - Adicionada coluna "Perguntas" (9+7+7+6+8+9=46) para distinguir queries de perguntas
+  - Historico corrigido: "52 queries" → "120 queries", nomes de ficheiros com prefixo numerico
+- **INSIGHTS.md** - Tabela "Referencia Rapida" corrigida:
+  - Coluna "Queries" corrigida para valores reais (120 total)
+  - Adicionada coluna "Perguntas" (46 total)
+  - Nomes de ficheiros actualizados com prefixo numerico (`analise_genero.sql` → `04_analise_genero.sql`)
+  - Percentagem WorkLifeBalance corrigida: 71.1% → 71.2% (valor real: 1046/1470 = 71.16%)
+  - Percentagem EnvironmentSatisfaction corrigida: 61.1% → 61.2% (valor real: 899/1470 = 61.16%)
+- **QUESTIONS.md** - Percentagens e nomes de ficheiros corrigidos:
+  - F3 interpretacao: 71.1% → 71.2%
+  - F2 interpretacao: 61.1% → 61.2%
+  - Todas as referencias a ficheiros SQL actualizadas com prefixo numerico (6 ficheiros)
+
+## [2026-01-29] - Correcao de Conexao JupySQL
+
+### Fixed
+- Conexao JupySQL em 8 notebooks do projeto: `%sql {connection_url}` substituido por `%sql engine --alias Projeto1_IBM_HR`
+- JupySQL 0.11+ nao suporta `%sql {variable}` — requer objecto SQLAlchemy `engine`
+- Adicionado `from sqlalchemy import create_engine` a todos os notebooks (01-08)
+
 ## [2026-01-29] - Renomeacao de Ficheiros SQL com Prefixo Numerico
 
 ### Changed
@@ -91,8 +147,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - Seccao 5 (Attrition) preenchida com factores de risco e perfil comparativo
   - Seccao 6 (Questoes Adicionais) adicionada
   - Alertas e Recomendacoes actualizados (8 alertas, 6 pontos positivos, 12 recomendacoes)
-  - Tabela de referencia actualizada (52 queries, 100% concluido)
-- `PROGRESS.md` - fase Analise SQL marcada como 100% concluida (52/52 queries)
+  - Tabela de referencia actualizada (120 queries, 46 perguntas, 100% concluido)
+- `PROGRESS.md` - fase Analise SQL marcada como 100% concluida (120 queries, 46 perguntas)
 
 ## [2026-01-28] - Reorganizacao para Rastreabilidade
 

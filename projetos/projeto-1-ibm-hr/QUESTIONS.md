@@ -2,8 +2,7 @@
 
 ## Rastreabilidade Completa: Questao → Query → Resultado → Interpretacao
 
-Este documento contem a **evidencia completa** de cada analise realizada.
-Para um resumo executivo, ver [INSIGHTS.md](INSIGHTS.md).
+Este documento contém a **evidência completa** de cada análise realizada.
 
 ---
 
@@ -11,7 +10,7 @@ Para um resumo executivo, ver [INSIGHTS.md](INSIGHTS.md).
 
 ### G1: Qual a proporcao homens/mulheres global?
 
-**Ficheiro**: `sql/analise_genero.sql` - Seccao 1
+**Ficheiro**: `sql/04_analise_genero.sql` - Seccao 1
 
 **Query**:
 ```sql
@@ -36,7 +35,7 @@ GROUP BY Gender;
 
 ### G2: Qual a distribuicao de genero por Department?
 
-**Ficheiro**: `sql/analise_genero.sql` - Seccao 2
+**Ficheiro**: `sql/04_analise_genero.sql` - Seccao 2
 
 **Query**:
 ```sql
@@ -67,7 +66,7 @@ ORDER BY PercMulheres;
 
 ### G3: Qual a distribuicao de genero por JobLevel?
 
-**Ficheiro**: `sql/analise_genero.sql` - Seccao 4
+**Ficheiro**: `sql/04_analise_genero.sql` - Seccao 4
 
 **Query**:
 ```sql
@@ -103,7 +102,7 @@ ORDER BY JobLevel;
 
 ### G4: Qual a distribuicao de genero por JobRole?
 
-**Ficheiro**: `sql/analise_genero.sql` - Seccao 3
+**Ficheiro**: `sql/04_analise_genero.sql` - Seccao 3
 
 **Query**:
 ```sql
@@ -138,7 +137,7 @@ ORDER BY PercMulheres;
 
 ### G5: Existe gap salarial entre generos?
 
-**Ficheiro**: `sql/analise_genero.sql` - Seccao 5
+**Ficheiro**: `sql/04_analise_genero.sql` - Seccao 5
 
 **Query (global)**:
 ```sql
@@ -192,7 +191,7 @@ ORDER BY GapSalarial DESC;
 
 ### G6: Mulheres tem mais ou menos OverTime?
 
-**Ficheiro**: `sql/analise_genero.sql` - Seccao 8
+**Ficheiro**: `sql/04_analise_genero.sql` - Seccao 8
 
 **Query**:
 ```sql
@@ -220,7 +219,7 @@ ORDER BY Gender, OverTime;
 
 ### G7: Qual a taxa de Attrition por genero?
 
-**Ficheiro**: `sql/analise_genero.sql` - Seccao 7
+**Ficheiro**: `sql/04_analise_genero.sql` - Seccao 7
 
 **Query**:
 ```sql
@@ -250,7 +249,7 @@ ORDER BY Gender, Attrition;
 
 ### F1: Qual o nivel medio de JobSatisfaction?
 
-**Ficheiro**: `sql/analise_felicidade.sql` - Seccao 1
+**Ficheiro**: `sql/05_analise_felicidade.sql` - Seccao 1
 
 **Query**:
 ```sql
@@ -281,7 +280,7 @@ FROM Colaboradores;
 
 ### F2: Qual o nivel medio de EnvironmentSatisfaction?
 
-**Ficheiro**: `sql/analise_felicidade.sql` - Seccao 2
+**Ficheiro**: `sql/05_analise_felicidade.sql` - Seccao 2
 
 **Query**:
 ```sql
@@ -305,13 +304,13 @@ ORDER BY EnvironmentSatisfaction;
 | 3 | High | 453 | 30.8% |
 | 4 | Very High | 446 | 30.3% |
 
-**Interpretacao**: Media 2.72/4. 61.1% dos colaboradores tem satisfacao alta ou muito alta com o ambiente (niveis 3-4). Contudo, 19.3% tem satisfacao baixa - quase 1 em cada 5.
+**Interpretacao**: Media 2.72/4. 61.2% dos colaboradores tem satisfacao alta ou muito alta com o ambiente (niveis 3-4). Contudo, 19.3% tem satisfacao baixa - quase 1 em cada 5.
 
 ---
 
 ### F3: Qual o nivel medio de WorkLifeBalance?
 
-**Ficheiro**: `sql/analise_felicidade.sql` - Seccao 2
+**Ficheiro**: `sql/05_analise_felicidade.sql` - Seccao 2
 
 **Query**:
 ```sql
@@ -335,7 +334,7 @@ ORDER BY WorkLifeBalance;
 | 3 | Better | 893 | 60.7% |
 | 4 | Best | 153 | 10.4% |
 
-**Interpretacao**: Media 2.76/4. WorkLifeBalance e o melhor indicador. 71.1% reporta nivel "Better" ou "Best". Apenas 5.4% (80 pessoas) tem WLB "Bad" - grupo pequeno mas critico para retencao. A grande maioria (60.7%) esta no nivel 3 ("Better").
+**Interpretacao**: Media 2.76/4. WorkLifeBalance e o melhor indicador. 71.2% reporta nivel "Better" ou "Best". Apenas 5.4% (80 pessoas) tem WLB "Bad" - grupo pequeno mas critico para retencao. A grande maioria (60.7%) esta no nivel 3 ("Better").
 
 **JobSatisfaction - Distribuicao**:
 
@@ -352,7 +351,7 @@ ORDER BY WorkLifeBalance;
 
 ### F4: Qual departamento tem pior satisfacao?
 
-**Ficheiro**: `sql/analise_felicidade.sql` - Seccao 3
+**Ficheiro**: `sql/05_analise_felicidade.sql` - Seccao 3
 
 **Query**:
 ```sql
@@ -398,7 +397,7 @@ ORDER BY IndiceFelicidade DESC;
 
 ### F5: Existe correlacao entre satisfacao e OverTime?
 
-**Ficheiro**: `sql/analise_felicidade.sql` - Seccao 5.1
+**Ficheiro**: `sql/05_analise_felicidade.sql` - Seccao 5.1
 
 **Query**:
 ```sql
@@ -424,7 +423,7 @@ GROUP BY OverTime;
 
 ### F6: RelationshipSatisfaction varia por MaritalStatus?
 
-**Ficheiro**: `sql/analise_felicidade.sql` - Query adicional
+**Ficheiro**: `sql/05_analise_felicidade.sql` - Query adicional
 
 **Query**:
 ```sql
@@ -452,7 +451,7 @@ ORDER BY SatisfacaoRelacoes DESC;
 
 ### F7: WorkLifeBalance varia por BusinessTravel?
 
-**Ficheiro**: `sql/analise_felicidade.sql` - Seccao 5.2
+**Ficheiro**: `sql/05_analise_felicidade.sql` - Seccao 5.2
 
 **Query**:
 ```sql
@@ -528,7 +527,7 @@ ORDER BY IndiceFelicidade DESC;
 
 ### C1: Qual o departamento dominante?
 
-**Ficheiro**: `sql/analise_exploratoria.sql` - Seccao 6
+**Ficheiro**: `sql/03_analise_exploratoria.sql` - Seccao 6
 
 **Query**:
 ```sql
@@ -555,7 +554,7 @@ ORDER BY Total DESC;
 
 ### C2: Qual a idade media e distribuicao etaria?
 
-**Ficheiro**: `sql/analise_exploratoria.sql` - Seccao 2
+**Ficheiro**: `sql/03_analise_exploratoria.sql` - Seccao 2
 
 **Query (estatisticas)**:
 ```sql
@@ -608,7 +607,7 @@ ORDER BY MIN(Age);
 
 ### C3: Qual o nivel de Education predominante?
 
-**Ficheiro**: `sql/analise_exploratoria.sql` - Seccao 5
+**Ficheiro**: `sql/03_analise_exploratoria.sql` - Seccao 5
 
 **Query**:
 ```sql
@@ -641,7 +640,7 @@ ORDER BY Education;
 
 ### C4: Quais as areas de EducationField?
 
-**Ficheiro**: `sql/analise_exploratoria.sql` - Seccao 5
+**Ficheiro**: `sql/03_analise_exploratoria.sql` - Seccao 5
 
 **Query**:
 ```sql
@@ -671,7 +670,7 @@ ORDER BY Total DESC;
 
 ### C5: Qual o MaritalStatus mais comum?
 
-**Ficheiro**: `sql/analise_exploratoria.sql` - Seccao 4
+**Ficheiro**: `sql/03_analise_exploratoria.sql` - Seccao 4
 
 **Query**:
 ```sql
@@ -698,7 +697,7 @@ ORDER BY Total DESC;
 
 ### C6: Quantas empresas anteriores em media (NumCompaniesWorked)?
 
-**Ficheiro**: `sql/analise_exploratoria.sql` - Seccao 7 (metricas agregadas)
+**Ficheiro**: `sql/03_analise_exploratoria.sql` - Seccao 7 (metricas agregadas)
 
 **Query**:
 ```sql
@@ -719,7 +718,7 @@ FROM Colaboradores;
 
 ### C7: Qual a distancia media de casa (DistanceFromHome)?
 
-**Ficheiro**: `sql/analise_exploratoria.sql` - Seccao 7 (mesma query de C6)
+**Ficheiro**: `sql/03_analise_exploratoria.sql` - Seccao 7 (mesma query de C6)
 
 **Resultado**: Media de **9 unidades** (provavelmente milhas, contexto EUA/IBM).
 
@@ -729,7 +728,7 @@ FROM Colaboradores;
 
 ### C8: Qual a distribuicao por JobRole?
 
-**Ficheiro**: `sql/analise_exploratoria.sql` - Seccao 6
+**Ficheiro**: `sql/03_analise_exploratoria.sql` - Seccao 6
 
 **Query**:
 ```sql
@@ -762,7 +761,7 @@ ORDER BY Total DESC;
 
 ### C9: Qual o salario medio por departamento/cargo?
 
-**Ficheiro**: `sql/analise_exploratoria.sql` - Seccao 8
+**Ficheiro**: `sql/03_analise_exploratoria.sql` - Seccao 8
 
 **Query (por departamento)**:
 ```sql
@@ -814,7 +813,7 @@ ORDER BY JobLevel;
 
 ### E1: Quantos colaboradores tem 55+ anos?
 
-**Ficheiro**: `sql/analise_envelhecimento.sql` - Seccoes 1-2
+**Ficheiro**: `sql/06_analise_envelhecimento.sql` - Seccoes 1-2
 
 **Query**:
 ```sql
@@ -848,7 +847,7 @@ ORDER BY MIN(Age) DESC;
 
 ### E2: Quantos colaboradores tem 60+ anos?
 
-**Ficheiro**: `sql/analise_envelhecimento.sql` - Seccao 2
+**Ficheiro**: `sql/06_analise_envelhecimento.sql` - Seccao 2
 
 **Resultado**: **5 colaboradores** (0.3%) com 60 anos (idade maxima no dataset). Nenhum com 62+, logo 0 reformas nos proximos 5 anos (reforma aos 67 em Portugal).
 
@@ -858,7 +857,7 @@ ORDER BY MIN(Age) DESC;
 
 ### E3: Qual a distribuicao de TotalWorkingYears?
 
-**Ficheiro**: `sql/analise_envelhecimento.sql` - Seccao 7
+**Ficheiro**: `sql/06_analise_envelhecimento.sql` - Seccao 7
 
 **Query**:
 ```sql
@@ -893,7 +892,7 @@ ORDER BY MIN(Age);
 
 ### E4: Quantos anos em media ficam na empresa?
 
-**Ficheiro**: `sql/analise_envelhecimento.sql` - Seccao 7 (mesma query E3)
+**Ficheiro**: `sql/06_analise_envelhecimento.sql` - Seccao 7 (mesma query E3)
 
 **Resultado**: Media global de **7 anos** na empresa (ja documentado em C6). Por faixa etaria: 4 anos (18-29), 6 anos (30-39), 8 anos (40-49), 9 anos (50-59), 12 anos (60+).
 
@@ -903,7 +902,7 @@ ORDER BY MIN(Age);
 
 ### E5: Quem esta perto da reforma esta em cargos criticos?
 
-**Ficheiro**: `sql/analise_envelhecimento.sql` - Seccoes 4-6
+**Ficheiro**: `sql/06_analise_envelhecimento.sql` - Seccoes 4-6
 
 **Query (envelhecimento por cargo)**:
 ```sql
@@ -951,7 +950,7 @@ ORDER BY IdadeMedia DESC;
 
 ### E6: Qual o risco de saida em massa por departamento?
 
-**Ficheiro**: `sql/analise_envelhecimento.sql` - Seccoes 3, 5, 8
+**Ficheiro**: `sql/06_analise_envelhecimento.sql` - Seccoes 3, 5, 8
 
 **Query (por departamento)**:
 ```sql
@@ -1000,7 +999,7 @@ ORDER BY ColaboradoresEmRisco DESC;
 
 ### A1: Qual a taxa global de Attrition?
 
-**Ficheiro**: `sql/analise_attrition.sql` - Seccao 1
+**Ficheiro**: `sql/07_analise_attrition.sql` - Seccao 1
 
 **Query**:
 ```sql
@@ -1024,7 +1023,7 @@ GROUP BY Attrition;
 
 ### A2: Qual departamento perde mais pessoas?
 
-**Ficheiro**: `sql/analise_attrition.sql` - Seccoes 3-4
+**Ficheiro**: `sql/07_analise_attrition.sql` - Seccoes 3-4
 
 **Query (por departamento)**:
 ```sql
@@ -1065,7 +1064,7 @@ ORDER BY TaxaAttrition DESC;
 
 ### A3: Quem sai tem mais OverTime?
 
-**Ficheiro**: `sql/analise_attrition.sql` - Seccao 6.1
+**Ficheiro**: `sql/07_analise_attrition.sql` - Seccao 6.1
 
 **Query**:
 ```sql
@@ -1090,7 +1089,7 @@ GROUP BY OverTime;
 
 ### A4: Existe padrao de satisfacao em quem sai?
 
-**Ficheiro**: `sql/analise_attrition.sql` - Seccoes 6.5-6.6
+**Ficheiro**: `sql/07_analise_attrition.sql` - Seccoes 6.5-6.6
 
 **Query (por satisfacao)**:
 ```sql
@@ -1131,7 +1130,7 @@ ORDER BY JobSatisfaction;
 
 ### A5: YearsSinceLastPromotion influencia saidas?
 
-**Ficheiro**: `sql/analise_attrition.sql` - Seccao 6.4
+**Ficheiro**: `sql/07_analise_attrition.sql` - Seccao 6.4
 
 **Query**:
 ```sql
@@ -1165,7 +1164,7 @@ ORDER BY TaxaAttrition DESC;
 
 ### A6: Qual o perfil tipico de quem sai?
 
-**Ficheiro**: `sql/analise_attrition.sql` - Seccoes 2, 5, 7
+**Ficheiro**: `sql/07_analise_attrition.sql` - Seccoes 2, 5, 7
 
 **Query (perfil comparativo)**:
 ```sql
@@ -1219,7 +1218,7 @@ FROM Colaboradores WHERE Attrition = 'No';
 
 ### A7: DistanceFromHome correlaciona com Attrition?
 
-**Ficheiro**: `sql/analise_attrition.sql` - Seccao 6.3
+**Ficheiro**: `sql/07_analise_attrition.sql` - Seccao 6.3
 
 **Query**:
 ```sql
@@ -1253,7 +1252,7 @@ ORDER BY TaxaAttrition DESC;
 
 ### A8: BusinessTravel correlaciona com Attrition?
 
-**Ficheiro**: `sql/analise_attrition.sql` - Seccao 6.2
+**Ficheiro**: `sql/07_analise_attrition.sql` - Seccao 6.2
 
 **Query**:
 ```sql
@@ -1294,7 +1293,7 @@ ORDER BY TaxaAttrition DESC;
 
 ### Q1: Existem os mesmos JobRoles em varios departamentos?
 
-**Ficheiro**: `sql/analise_adicional.sql` - Seccao 1
+**Ficheiro**: `sql/08_analise_adicional.sql` - Seccao 1
 
 **Query**:
 ```sql
@@ -1326,7 +1325,7 @@ ORDER BY JobRole, Department;
 
 ### Q2: So ha stock options para certo tipo de colaborador?
 
-**Ficheiro**: `sql/analise_adicional.sql` - Seccao 2
+**Ficheiro**: `sql/08_analise_adicional.sql` - Seccao 2
 
 **Resultado (distribuicao)**:
 
@@ -1367,7 +1366,7 @@ ORDER BY JobRole, Department;
 
 ### Q3: Muita gente a viver a 1 unidade de distancia?
 
-**Ficheiro**: `sql/analise_adicional.sql` - Seccao 3
+**Ficheiro**: `sql/08_analise_adicional.sql` - Seccao 3
 
 **Resultado (distribuicao detalhada)**:
 
@@ -1386,7 +1385,7 @@ ORDER BY JobRole, Department;
 
 ### Q4: PerformanceRating so tem valores 3 e 4?
 
-**Ficheiro**: `sql/analise_adicional.sql` - Seccao 4
+**Ficheiro**: `sql/08_analise_adicional.sql` - Seccao 4
 
 **Resultado**:
 
@@ -1403,7 +1402,7 @@ ORDER BY JobRole, Department;
 
 ### Q5: Ha conflito de geracoes?
 
-**Ficheiro**: `sql/analise_adicional.sql` - Seccao 5
+**Ficheiro**: `sql/08_analise_adicional.sql` - Seccao 5
 
 **Resultado (satisfacao por geracao)**:
 
@@ -1429,7 +1428,7 @@ ORDER BY JobRole, Department;
 
 ### Q6: Chefias sao mais masculinas?
 
-**Ficheiro**: `sql/analise_adicional.sql` - Seccao 6
+**Ficheiro**: `sql/08_analise_adicional.sql` - Seccao 6
 
 **Resultado (cargos de gestao por genero)**:
 
@@ -1445,7 +1444,7 @@ ORDER BY JobRole, Department;
 
 ### Q7: Experiencia correlaciona com felicidade?
 
-**Ficheiro**: `sql/analise_adicional.sql` - Seccao 7
+**Ficheiro**: `sql/08_analise_adicional.sql` - Seccao 7
 
 **Resultado (por anos na empresa)**:
 
@@ -1472,7 +1471,7 @@ ORDER BY JobRole, Department;
 
 ### Q8: MonthlyRate, DailyRate, HourlyRate - o que significam?
 
-**Ficheiro**: `sql/analise_adicional.sql` - Seccao 8
+**Ficheiro**: `sql/08_analise_adicional.sql` - Seccao 8
 
 **Resultado (estatisticas)**:
 
@@ -1489,7 +1488,7 @@ ORDER BY JobRole, Department;
 
 ### Q9: Colunas constantes confirmadas?
 
-**Ficheiro**: `sql/analise_adicional.sql` - Seccao 9
+**Ficheiro**: `sql/08_analise_adicional.sql` - Seccao 9
 
 **Resultado**:
 

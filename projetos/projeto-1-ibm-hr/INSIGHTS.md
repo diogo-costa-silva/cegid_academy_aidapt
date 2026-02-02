@@ -55,17 +55,17 @@
 
 ### Por Cargo
 
-| Cargo | % Mulheres | Situacao |
-|-------|------------|----------|
-| Manufacturing Director | 49.7% | Melhor |
-| Manager | 46.1% | Bom |
-| Research Director | 41.3% | |
-| Healthcare Representative | 38.9% | |
-| Sales Executive | 40.5% | |
-| Sales Representative | 45.8% | |
-| Research Scientist | 39.0% | |
-| Lab Technician | 32.8% | Pior |
-| Human Resources | 30.8% | Critico |
+| Cargo                     | % Mulheres | Situacao |
+| ------------------------- | ---------- | -------- |
+| Manufacturing Director    | 49.7%      | Melhor   |
+| Manager                   | 46.1%      | Bom      |
+| Research Director         | 41.3%      | Moderado |
+| Healthcare Representative | 38.9%      | Fraco    |
+| Sales Executive           | 40.5%      | Moderado |
+| Sales Representative      | 45.8%      | Bom      |
+| Research Scientist        | 39.0%      | Fraco    |
+| Lab Technician            | 32.8%      | Fraco    |
+| Human Resources           | 30.8%      | Critico  |
 
 > Evidencia: [G4](QUESTIONS.md#g4-qual-a-distribuicao-de-genero-por-jobrole)
 
@@ -130,12 +130,12 @@
 **WorkLifeBalance** (melhor indicador):
 - 60.7% no nivel "Better" (3)
 - Apenas 5.4% no nivel "Bad" (1)
-- 71.1% nos niveis 3-4
+- 71.2% nos niveis 3-4
 
 > Evidencia: [F3](QUESTIONS.md#f3-qual-o-nivel-medio-de-worklifebalance)
 
 **EnvironmentSatisfaction**:
-- 61.1% nos niveis High/Very High
+- 61.2% nos niveis High/Very High
 - 19.3% no nivel Low - quase 1 em cada 5
 
 > Evidencia: [F2](QUESTIONS.md#f2-qual-o-nivel-medio-de-environmentsatisfaction)
@@ -570,12 +570,12 @@ Empresa dominada por Millennials (62.1%) - populacao jovem com folga para sucess
 
 ## Referencia Rapida: Queries por Tema
 
-| Tema | Ficheiro SQL | Queries | Evidencia |
-|------|--------------|---------|-----------|
-| Caracterizacao | `analise_exploratoria.sql` | 9 | [C1-C9](QUESTIONS.md#3-caracterizacao---quem-somos) |
-| Genero | `analise_genero.sql` | 9 | [G1-G7](QUESTIONS.md#1-igualdade-de-genero) |
-| Felicidade | `analise_felicidade.sql` | 8 | [F1-F7](QUESTIONS.md#2-felicidade) |
-| Envelhecimento | `analise_envelhecimento.sql` | 9 | [E1-E6](QUESTIONS.md#4-envelhecimento) |
-| Attrition | `analise_attrition.sql` | 8 | [A1-A8](QUESTIONS.md#5-attrition) |
-| Adicional | `analise_adicional.sql` | 9 | [Q1-Q9](QUESTIONS.md#6-questoes-adicionais-do-grupo) |
-| **Total** | | **52** | **100% concluido** |
+| Tema | Ficheiro SQL | Queries | Perguntas | Evidencia |
+|------|--------------|---------|-----------|-----------|
+| Caracterizacao | `03_analise_exploratoria.sql` | 18 | 9 (C1-C9) | [C1-C9](QUESTIONS.md#3-caracterizacao---quem-somos) |
+| Genero | `04_analise_genero.sql` | 18 | 7 (G1-G7) | [G1-G7](QUESTIONS.md#1-igualdade-de-genero) |
+| Felicidade | `05_analise_felicidade.sql` | 19 | 7 (F1-F7) | [F1-F7](QUESTIONS.md#2-felicidade) |
+| Envelhecimento | `06_analise_envelhecimento.sql` | 17 | 6 (E1-E6) | [E1-E6](QUESTIONS.md#4-envelhecimento) |
+| Attrition | `07_analise_attrition.sql` | 21 | 8 (A1-A8) | [A1-A8](QUESTIONS.md#5-attrition) |
+| Adicional | `08_analise_adicional.sql` | 27 | 9 (Q1-Q9) | [Q1-Q9](QUESTIONS.md#6-questoes-adicionais-do-grupo) |
+| **Total** | | **120** | **46** | **100% concluido** |
